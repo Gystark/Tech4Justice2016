@@ -11,7 +11,7 @@ class Category(models.Model):
     """
 
     name = models.CharField(max_length=128, unique=True)
-    slug = models.SlugField(default='')
+    slug = models.SlugField()
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
