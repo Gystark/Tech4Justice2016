@@ -58,7 +58,7 @@ ROOT_URLCONF = 'wasp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'mainapp/../templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'mainapp/../mainapp/../templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
