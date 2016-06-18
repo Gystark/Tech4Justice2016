@@ -31,7 +31,7 @@ def view_issue(request, issue_name_slug):
 
 def search(request):
     if request.GET:
-        search_term = request.GET['srch-term']
+        search_term = request.GET['search-term']
     else:
         search_term = ''
     categories = Category.objects.all()
@@ -40,6 +40,17 @@ def search(request):
               Issue.objects.filter(name__contains=search_term) or \
               Category.objects.filter(name__contains=search_term)
     return render(request, 'mainapp/search.html', {'categories': categories, 'results': results})
+
+
+def search_dictionary(request):
+    if request.GET:
+        search_term = request.GET['search-term']
+    else:
+        search_term = ''
+    results = Dictionary.objects.filter(expression__contains=search_term) or\
+              Dictionary.objects.filter(definition__contains=search_term)
+    items = Dictionary.objects.all()
+    return render(request, 'mainapp/dictionary.html', {'results': results, 'items': items})
 
 
 def dictionary(request):
