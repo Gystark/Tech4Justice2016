@@ -2,6 +2,7 @@
 All the models of the project are stored here.
 """
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class Category(models.Model):
@@ -10,6 +11,11 @@ class Category(models.Model):
     """
 
     name = models.CharField(max_length=128, unique=True)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -22,6 +28,11 @@ class Issue(models.Model):
 
     name = models.CharField(max_length=128, unique=True)
     category = models.ForeignKey(Category)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -35,6 +46,11 @@ class Question(models.Model):
     question = models.CharField(max_length=128, unique=True)
     answer = models.TextField()
     issue = models.ForeignKey(Issue)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.question)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.question
