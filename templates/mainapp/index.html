@@ -2,6 +2,12 @@
 {% block content %}
     <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>{{ text }}</h1>
+        {% for category in categories %}
+            <div>
+               <form action="{% url 'get_issues' %}" method="get">
+
+               </form>
+            </div>
+        {% endfor %}
       </div>
 {% endblock %}
