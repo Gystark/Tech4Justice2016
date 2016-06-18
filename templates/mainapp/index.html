@@ -17,7 +17,7 @@
         {% for category in categories %}
                 <div class="col-lg-4 col-sm-6 col-xs-12">
             <a href="/category/{{ category.slug }}">
-                 <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
+                 <img src="{{ category.photo }}http://placehold.it/800x600" class="thumbnail img-responsive">
                 <div class="carousel-caption"><h3>{{ category }}</h3></div>
             </a>
         </div>

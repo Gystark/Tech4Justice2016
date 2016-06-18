@@ -12,6 +12,7 @@ class Category(models.Model):
 
     name = models.CharField(max_length=128, unique=True)
     slug = models.SlugField()
+    photo = models.ImageField(upload_to='category_photos')
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
