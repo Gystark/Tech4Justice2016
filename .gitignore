@@ -5,6 +5,7 @@ __pycache__/
 .idea
 .DS_Store
 mainapp/migrations
+db.sqlite3
 
 # C extensions
 *.so
