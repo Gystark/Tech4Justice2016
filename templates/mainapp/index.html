@@ -1,7 +1,7 @@
 {% extends 'mainapp/base.html' %}
 {% block sidebar %}
 {% for category in categories %}
-<p>{{ category }}</p>
+<li class="navbar-brand" style="color: white"><a href="{% url 'index' %}">{{ category }}</a></li>
 {% endfor %}
 
 {% endblock %}
