@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <title>Chat with an expert</title>
     <link rel="stylesheet" href="{{ static_url("chat.css") }}" type="text/css">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
   </head>
   <body>
+  <!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" style="background-color:#000000; height:61px; padding-top:5px;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://127.0.0.1:8000/"><img src="static/mainapp/images/nav_bar_logo.png" style="margin-top:-15px;"/></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" style="font-weight:bold;">
+                <li class="active"><a href="#"><i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Your Issues</a></li>
+                <li><a href="http://127.0.0.1:8888/"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>&nbsp;&nbsp;Talk to someone</a></li>
+                <li><a href="http://127.0.0.1:8000/local_help/"><i class="glyphicon glyphicon-globe" aria-hidden="true"></i>&nbsp;&nbsp;Find local help</a></li>
+                <li><a href="http://127.0.0.1:8000/dictionary/"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>&nbsp;&nbsp;Dictionary</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
     <div id="body">
       <div id="inbox">
         {% for message in messages %}
