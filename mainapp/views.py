@@ -3,16 +3,15 @@ from .models import Category, Reference, Issue, Question
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import JsonResponse
 
-# Create your views here.
+
 def index(request):
-    context = {}
     categories = Category.objects.all()
-    context['categories'] = categories
-    return render(request, 'mainapp/index.html', context)
+    return render(request, 'mainapp/index.html', {'categories': categories})
 
 
 def view_category(request, category_name_slug):
-    return render(request, 'mainapp/category.html', {})
+    categories = Category.objects.all()
+    return render(request, 'mainapp/category.html', {'categories': categories})
 
 def get_issues(request):
     context = {}
@@ -23,3 +22,23 @@ def get_issues(request):
         return render(request, 'mainapp/issues.html', context)
 
     return HttpResponseRedirect('/')
+
+
+def search(request):
+    categories = Category.objects.all()
+    return render(request, 'mainapp/search.html', {'categories': categories})
+
+
+def dictionary(request):
+    categories = Category.objects.all()
+    return render(request, 'mainapp/dictionary.html', {'categories': categories})
+
+
+def local_help(request):
+    categories = Category.objects.all()
+    return render(request, 'mainapp/local_help.html', {'categories': categories})
+
+
+def talk_to_someone(request):
+    categories = Category.objects.all()
+    return render(request, 'mainapp/talk_to_someone.html', {'categories': categories})
