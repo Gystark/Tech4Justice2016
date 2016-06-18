@@ -36,10 +36,10 @@ def search(request):
         search_term = request.GET['search-term']
     else:
         search_term = ''
-    questions = Question.objects.filter(question__contains=search_term) or\
-                Question.objects.filter(answer__contains=search_term)
-    issues = Issue.objects.filter(name__contains=search_term)
-    categories = Category.objects.filter(name__contains=search_term)
+    questions = Question.objects.filter(question__icontains=search_term) or\
+                Question.objects.filter(answer__icontains=search_term)
+    issues = Issue.objects.filter(name__icontains=search_term)
+    categories = Category.objects.filter(name__icontains=search_term)
     return render(request, 'mainapp/search.html', {'issues': issues,'categories': categories, 'questions': questions})
 
 

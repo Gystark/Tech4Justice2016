@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Wasp</title>
+    <title>{% block title %}Wasp{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'mainapp/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -67,7 +67,7 @@
 
         <form autocomplete="off" class="form-horizontal" action="{% url 'search' %}" method="get" accept-charset="utf-8">
         <div class="input-group">
-            <input value="" class="form-control input-lg" placeholder="What do you need help with?" type="text" name="srch-term" id="srch-term">
+            <input value="" class="form-control input-lg" placeholder="What do you need help with?" type="text" name="search-term" id="search-term">
             <span class="input-group-btn">
                <button class="btn btn-default btn-lg" type="submit" id="addressSearch">
                    <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
