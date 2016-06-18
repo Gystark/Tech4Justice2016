@@ -11,7 +11,7 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def view_category(request):
+def view_category(request, category_name_slug):
     return render(request, 'mainapp/category.html', {})
 
 def get_issues(request):

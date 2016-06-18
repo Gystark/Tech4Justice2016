@@ -7,8 +7,29 @@ from mainapp.models import Category
 from mainapp.models import Issue
 from mainapp.models import Reference
 
-admin.site.register(Question)
-admin.site.register(Category)
-admin.site.register(Issue)
+
+class CategoryAdmin(admin.ModelAdmin):
+    """
+    Populate the slug field in the Category model concurrently
+    """
+    prepopulated_fields = {'slug':('name',)}
+
+
+class IssueAdmin(admin.ModelAdmin):
+    """
+    Populate the slug field in the Issue model concurrently
+    """
+    prepopulated_fields = {'slug':('name',)}
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    """
+    Populate the slug field in the Question model concurrently
+    """
+    prepopulated_fields = {'slug':('question',)}
+
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Issue, IssueAdmin)
 admin.site.register(Reference)
 
