@@ -11,6 +11,7 @@ $(document).ready(function(){
             type: "GET",
             data: {'category_id': category_id},
             success: function(data){
+                alert(data);
                 $('#issue-list').html(data);
             }
         })

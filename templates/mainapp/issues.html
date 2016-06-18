@@ -1,6 +1,3 @@
-{% extends 'base.html' %}
-{% block content %}
-    {% for issue in issues %}
-        <a url="#" value="{{ issue.id }}">{{ issue.name }}</a>
-    {% endfor %}
-{% endblock %}
+{% for issue in issues %}
+    <a url="#" value="{{ issue.id }}">{{ issue.name }}</a>
+{% endfor %}

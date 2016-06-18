@@ -1,4 +1,4 @@
-{% extends 'mainapp/../base.html' %}
+{% extends 'mainapp/../mainapp/base.html' %}
 {% block sidebar %}
 {% for category in categories %}
 <li class="navbar-brand" style="color: white"><a href="{% url 'index' %}">{{ category }}</a></li>
