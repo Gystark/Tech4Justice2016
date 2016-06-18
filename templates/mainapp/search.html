@@ -2,24 +2,24 @@
 {% block content %}
     <p class="text-center"><strong>Results:</strong>:</p><br>
     {% if questions %}
-        Questions:<br>
+        <p>><strong>Questions:</strong></p>
     {% endif %}
     {% for question in questions %}
-        {{ question }}<br>
+        <p>{{ question }}</p>
     {% endfor %}
     <br>
     {% if issues %}
-        Issues:<br>
+        <p>><strong>Issues:</strong></p>
     {% endif %}
     {% for issue in issues %}
-        {{ issueu }}<br>
+        <p>{{ issue }}</p>
     {% endfor %}
     <br>
     {% if categories %}
-        Categories:<br>
+        <p><strong>Categories:</strong></p>
     {% endif %}
     {% for category in categories %}
-        {{ category }}<br>
+        <p>{{ category }}</p>
     {% endfor %}
 
 
