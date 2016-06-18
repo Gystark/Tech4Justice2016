@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 {% block content %}
     {% for question_data in context %}
-        <div class="container">
+        <div class="container" style="padding-top: 5%;">
             <div class="question">
                 <a class="list-group-item" href="#">{{ question_data.question.question }}</a>
             </div>

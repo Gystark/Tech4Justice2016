@@ -1,6 +1,8 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
+    <div style="padding-top: 5%;">
     {% for issue in issues %}
         <a href="{% url 'issue' issue.slug %}" class="list-group-item">{{ issue.name }}</a>
     {% endfor %}
+    </div>
 {% endblock %}

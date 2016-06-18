@@ -14,43 +14,13 @@
     </form>
     </div>
         <div class="row">
-
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a href="#">
+        {% for category in categories %}
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+            <a href="/category/{{ category.slug }}">
                  <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
-                <div class="carousel-caption"><h3>Family Matters</h3></div>
+                <div class="carousel-caption"><h3>{{ category }}</h3></div>
             </a>
         </div>
-         <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a href="#">
-                 <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
-                <div class="carousel-caption"><h3>Know Your Rights</h3></div>
-            </a>
-        </div>
-         <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a href="#">
-                 <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
-                <div class="carousel-caption"><h3>Crime</h3></div>
-            </a>
-        </div>
-         <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a href="#">
-                 <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
-                <div class="carousel-caption"><h3>Traveling</h3></div>
-            </a>
-        </div>
-         <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a href="#">
-                 <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
-                <div class="carousel-caption"><h3>Health &amp; Personal</h3></div>
-            </a>
-        </div>
-         <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a href="#">
-                 <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
-                <div class="carousel-caption"><h3>Money &amp; Consumer</h3></div>
-            </a>
-        </div>
-
+        {% endfor %}
     </div>
 {% endblock %}

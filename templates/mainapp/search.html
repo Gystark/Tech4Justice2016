@@ -2,14 +2,14 @@
 {% block content %}
     <p class="text-center"><strong>Results:</strong>:</p><br>
     {% if questions %}
-        <p>><strong>Questions:</strong></p>
+        <p><strong>Questions:</strong></p>
     {% endif %}
     {% for question in questions %}
         <p>{{ question }}</p>
     {% endfor %}
     <br>
     {% if issues %}
-        <p>><strong>Issues:</strong></p>
+        <p><strong>Issues:</strong></p>
     {% endif %}
     {% for issue in issues %}
         <p>{{ issue }}</p>
