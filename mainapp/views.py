@@ -9,6 +9,10 @@ def index(request):
 
     return render(request, 'mainapp/index.html', context)
 
+
+def view_category(request):
+    return render(request, 'mainapp/category.html', {})
+
 def get_issues(request):
     if request.is_ajax():
         category_searched = Category.objects.get(id=request.GET['category_id'])
