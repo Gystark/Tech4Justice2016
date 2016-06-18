@@ -17,8 +17,6 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'mainapp/css/fixed-navbar-top.css' %}" rel="stylesheet">
 
-    <link href="{% static 'mainapp/css/simple-sidebar.css' %}" rel="stylesheet    ">
-
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -44,21 +42,21 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-{#                <li class="active"><a href="{% url 'index' %}">Home</a></li>#}
-{#                <li><a href="{% url 'talk_to_someone' %}">Talk to someone</a></li>#}
-{#                <li><a href="{% url 'dictionary' %}">Dictionary</a></li>#}
-{#                <li><a href="{% url 'local_help' %}">Find local help</a></li>#}
+                <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'talk_to_someone' %}">Talk to someone</a></li>
+                <li><a href="{% url 'dictionary' %}">Dictionary</a></li>
+                <li><a href="{% url 'local_help' %}">Find local help</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">
-{#                <form class="navbar-form" action="{% url 'search' %}">#}
-{#                    <div class="input-group">#}
-{#                        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">#}
-{#                        <div class="input-group-btn">#}
-{#                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>#}
-{#                            </button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </form>#}
+                <form class="navbar-form" action="{% url 'search' %}" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div><!--/.nav-collapse -->
     </div>
