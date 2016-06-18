@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import Category, Reference, Issue, Question
 from django.http import HttpResponse, HttpResponseRedirect
-# Create your views here.
+
+
 def index(request):
     context = {}
     categories = Category.objects.all()
@@ -10,8 +11,9 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def view_category(request):
+def view_category(request, category_name_slug):
     return render(request, 'mainapp/category.html', {})
+
 
 def get_issues(request):
     if request.is_ajax():
