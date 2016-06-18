@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'registration',
     'mainapp',
 ]
@@ -129,3 +130,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REGISTRATION_AUTO_LOGIN = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block title %}Wasp{% endblock %}</title>
+    <title>{% block title %}Legal Helpbox{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'mainapp/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -54,9 +54,10 @@
                 <li><a href="{% url 'local_help' %}"><i class="glyphicon glyphicon-globe" aria-hidden="true"></i>&nbsp;&nbsp;Find local help</a></li>
                 <li><a href="{% url 'dictionary' %}"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>&nbsp;&nbsp;Dictionary</a></li>
             </ul>
-            <div class="nav navbar-nav navbar-right" style="color:#ffffff;padding-top:15px; padding-right:35px;">
-                Signup&nbsp;&nbsp;|&nbsp;&nbsp;Login
-            </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'registration_register' %}">Signup</a></li>
+                    <li><a href="{% url 'auth_login' %}">Login</a></li>
+                </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>

@@ -1,11 +1,17 @@
 {% extends "mainapp/base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+    <div class="row" style="padding-top: 10%;">
+    <div class="col-sm-6 col-sm-offset-3">
 <form method="post" action="." class="form-horizontal">
   {% csrf_token %}
-  {{ form.as_p }}
-
-  <input type="submit" value="{% trans 'Submit' %}" />
+  {{ form | crispy }}
+<div class="col-sm-12 col-sm-offset-4">
+  <input type="submit" value="{% trans 'Submit' %}" class="btn btn-primary">
+    </div>
 </form>
+    </div>
+    </div>
 {% endblock %}
