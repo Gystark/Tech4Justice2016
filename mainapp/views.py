@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
+from mainapp.models import Category
 
 # Create your views here.
 def index(request):
-    context = {'text': 'Test text.'}
+    categories = Category.objects.all()
+    context = {'text': 'Test text.', 'categories': categories}
     return render(request, 'mainapp/index.html', context)
