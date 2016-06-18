@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Category, Reference, Issue, Question, Dictionary
-
+from django.http import HttpResponseRedirect
 
 def index(request):
     categories = Category.objects.all()
@@ -44,14 +44,12 @@ def search(request):
 
 
 def search_dictionary(request):
-    if request.GET:
-        search_term = request.GET['search-term']
-    else:
-        search_term = ''
-    results = Dictionary.objects.filter(expression__contains=search_term) or\
-              Dictionary.objects.filter(definition__contains=search_term)
-    items = Dictionary.objects.all()
-    return render(request, 'mainapp/dictionary.html', {'results': results, 'items': items})
+    if request.is_ajax():
+        search_term = request.GET['search_term']
+        results = Dictionary.objects.filter(expression__contains=search_term) or \
+                  Dictionary.objects.filter(definition__contains=search_term)
+        results_length = len(results)
+        return render(request, 'mainapp/dictionary_search.html', {'items': results, 'length': results_length})
 
 
 def dictionary(request):

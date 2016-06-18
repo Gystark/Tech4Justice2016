@@ -1,0 +1,15 @@
+<table class="table table-bordered table-hover table-responsive">
+{% for item in items %}
+    {% if length == 1 %}
+        <tr>
+            <td style="background-color: #2aabd2">{{ item.expression }}</td>
+            <td style="background-color: #2aabd2">{{ item.definition }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td >{{ item.expression }}</td>
+            <td >{{ item.definition }}</td>
+        </tr>
+    {% endif %}
+{% endfor %}
+</table>
