@@ -7,7 +7,7 @@
                 <a class="list-group-item" href="#">{{ question_data.question.question }}</a>
             </div>
             <div class="answer" hidden>
-                <p>{{ question_data.question.question }}</p>
+                <p>{{ question_data.question.answer }}</p>
                 <p>Further references:</p>
                 {% for reference in question_data.references %}
                     <a href="{{ reference.reference }}" >{{ reference.name }}</a>
