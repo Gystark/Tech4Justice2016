@@ -34,12 +34,11 @@ def search(request):
         search_term = request.GET['search-term']
     else:
         search_term = ''
-    categories = Category.objects.all()
-    results = Question.objects.filter(question__contains=search_term) or \
-              Question.objects.filter(answer__contains=search_term) or \
-              Issue.objects.filter(name__contains=search_term) or \
-              Category.objects.filter(name__contains=search_term)
-    return render(request, 'mainapp/search.html', {'categories': categories, 'results': results})
+    questions = Question.objects.filter(question__contains=search_term) or\
+                Question.objects.filter(answer__contains=search_term)
+    issues = Issue.objects.filter(name__contains=search_term)
+    categories = Category.objects.filter(name__contains=search_term)
+    return render(request, 'mainapp/search.html', {'issues': issues,'categories': categories, 'questions': questions})
 
 
 def search_dictionary(request):
