@@ -6,6 +6,7 @@ from mainapp.models import Question
 from mainapp.models import Category
 from mainapp.models import Issue
 from mainapp.models import Reference
+from mainapp.models import Dictionary
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -32,4 +33,4 @@ admin.site.register(Question, QuestionAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Issue, IssueAdmin)
 admin.site.register(Reference)
-
+admin.site.register(Dictionary)

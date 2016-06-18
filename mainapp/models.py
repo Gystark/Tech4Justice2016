@@ -67,3 +67,13 @@ class Reference(models.Model):
     def __str__(self):
         return self.reference
 
+
+class Dictionary(models.Model):
+    expression = models.CharField(max_length=100)
+    definition = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.expression
+
+    class Meta:
+        verbose_name_plural = 'dictionaries'
