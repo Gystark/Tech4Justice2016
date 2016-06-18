@@ -1,5 +1,5 @@
-""" models of the project are stored here.
-All the
+"""
+All the models of the project are stored here.
 """
 from django.db import models
 
@@ -47,4 +47,7 @@ class Reference(models.Model):
 
     reference = models.URLField()
     question = models.ForeignKey(Question)
+
+    def __str__(self):
+        return self.reference
 
