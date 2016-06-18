@@ -1,3 +1,4 @@
+
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
@@ -44,26 +45,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li><a href="#about">Talk to someone</a></li>
+            <li><a href="#contact">Dictionary</a></li>
+              <li><a href="#local-help">Find local help</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul>
+          <div class="nav navbar-nav navbar-right">
+           <form class="navbar-form" role="search">
+                       <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><img src="{% static 'mainapp/images/search.png' %}"></button>
+            </div>
+        </div>
+           </form>
+          </div>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -81,11 +76,13 @@
     </div>
       <div class="row">
       <div class="col-lg-12">
+          ldasldlasldasldasldlasldasldlasdlasldasldlasl
           {% block content %}
           Default text here.
           {% endblock %}
       </div>
       </div>
+    </div>
     <div class="navbar navbar-fixed-bottom navbar-inverse">
         <h3 class="text-center" style="color: white">Footer text here.</h3>
     </div>

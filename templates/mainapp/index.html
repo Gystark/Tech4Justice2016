@@ -1,12 +1,14 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'mainapp/../base.html' %}
 {% block sidebar %}
 {% for category in categories %}
-    <div class="list-grouo" >
-        <a href="#" class="list-group-item" value="{{ category.id }}" >{{ category.name }}</a>
+    <div class="list-group" >
+        <a href="#" class="list-group-item category-identifier" value="{{ category.id }}" >{{ category.name }}</a>
     </div>
 {% endfor %}
 
 {% endblock %}
 {% block content %}
-    <p class="text-center">{{ text }}</p>
+    <div id="issue-list">
+      WTFFFFFFFFF
+    </div>
 {% endblock %}
