@@ -4,3 +4,7 @@
         <a href="{% url 'category' category.slug %}" class="list-group-item">{{ category.name }}</a>
     {% endfor %}
 {% endblock %}
+
+{% block static_per_page %}
+    <script></script>
+{% endblock %}
