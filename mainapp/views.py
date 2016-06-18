@@ -27,7 +27,9 @@ def view_issue(request, issue_name_slug):
             # get all the references related to this question
             references = Reference.objects.filter(question=question)
             context.append({'question': question, 'references': references})
-        return render(request, 'mainapp/questions.html', {'context': context})
+
+    return render(request, 'mainapp/questions.html', {'context': context})
+
 
 def search(request):
     if request.GET:
