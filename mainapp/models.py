@@ -20,6 +20,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'categories'
+
 
 class Issue(models.Model):
     """
@@ -69,6 +72,12 @@ class Reference(models.Model):
 
 
 class Dictionary(models.Model):
+    """
+    Model for the legal terms dictionary.
+    expression: a legal expression
+    definition: an  explanation for the exprezsion
+    """
+
     expression = models.CharField(max_length=100)
     definition = models.CharField(max_length=500)
 

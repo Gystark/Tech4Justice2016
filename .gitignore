@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 .idea
 .DS_Store
+mainapp/migrations
 
 # C extensions
 *.so
@@ -89,3 +90,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# DB file added to git ignore
+db.sqlite3

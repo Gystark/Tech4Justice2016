@@ -1,5 +1,4 @@
 {% extends 'mainapp/base.html' %}
-{% load staticfiles %}
 {% block content %}
     {% for issue in issues %}
         <a href="{% url 'issue' issue.slug %}" class="list-group-item">{{ issue.name }}</a>

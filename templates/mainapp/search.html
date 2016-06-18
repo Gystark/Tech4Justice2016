@@ -1,9 +1,26 @@
 {% extends 'mainapp/base.html' %}
-{% block sidebar %}
-{% for category in categories %}
-<li class="navbar-brand" style="color: white"><a href="/category/{{ category.slug }}">{{ category }}</a></li>
-{% endfor %}
-{% endblock %}
 {% block content %}
-    <p class="text-center">Text here.</p>
+    <p class="text-center"><strong>Results:</strong>:</p><br>
+    {% if questions %}
+        Questions:<br>
+    {% endif %}
+    {% for question in questions %}
+        {{ question }}<br>
+    {% endfor %}
+    <br>
+    {% if issues %}
+        Issues:<br>
+    {% endif %}
+    {% for issue in issues %}
+        {{ issueu }}<br>
+    {% endfor %}
+    <br>
+    {% if categories %}
+        Categories:<br>
+    {% endif %}
+    {% for category in categories %}
+        {{ category }}<br>
+    {% endfor %}
+
+
 {% endblock %}
