@@ -56,15 +56,12 @@ def search_dictionary(request):
 
 def dictionary(request):
     items = Dictionary.objects.all()
-    categories = Category.objects.all()
-    return render(request, 'mainapp/dictionary.html', {'categories': categories, 'items': items})
+    return render(request, 'mainapp/dictionary.html', {'items': items})
 
 
 def local_help(request):
-    categories = Category.objects.all()
-    return render(request, 'mainapp/local_help.html', {'categories': categories})
+    return render(request, 'mainapp/local_help.html')
 
 
 def talk_to_someone(request):
-    categories = Category.objects.all()
-    return render(request, 'mainapp/talk_to_someone.html', {'categories': categories})
+    return render(request, 'mainapp/talk_to_someone.html')
