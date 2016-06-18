@@ -32,7 +32,7 @@ class Question(models.Model):
     Object representing the questions and answers of our system
     """
 
-    question = models.CharField(max_length=True)
+    question = models.CharField(max_length=128)
     answer = models.TextField()
     issue = models.ForeignKey(Issue)
 
