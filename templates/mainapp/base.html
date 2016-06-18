@@ -28,7 +28,7 @@
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -67,9 +67,24 @@
     </nav>
 
     <div class="container">
-        {% block content %}
-        Default content here.
-        {% endblock %}
+    <div class="jumbotron">
+        <h1>Call to action text.</h1>
+    </div>
+      <div class="row">
+          <div class="col-lg-3">
+          {% block sidebar %}
+          Sidebar text.
+          {% endblock %}
+      </div>
+      <div class="col-lg-9">
+          {% block content %}
+          Default text here.
+          {% endblock %}
+      </div>
+      </div>
+    <div class="navbar navbar-fixed-bottom navbar-inverse">
+        <h3 class="text-center" style="color: white">Footer text here.</h3>
+    </div>
     </div> <!-- /container -->
 
 
