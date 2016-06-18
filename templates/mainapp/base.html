@@ -14,7 +14,6 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'mainapp/css/bootstrap.min.css' %}" rel="stylesheet">
 
-      <link href="{% static 'mainapp/css/simple-sidebar.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{% static 'mainapp/css/fixed-navbar-top.css' %}" rel="stylesheet">
 
@@ -66,27 +65,11 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div id="sidebar-wrapper">
-        <div class="text-center sidebar-nav">
-          {% block sidebar %}
-          Sidebar text.
-          {% endblock %}
-        </div>
-    </div>
+
     <div class="container">
-    <div class="jumbotron">
-        <h1>Call to action text.</h1>
-    </div>
-      <div class="row">
-      <div class="col-lg-12">
-          {% block content %}
-          Default text here.
-          {% endblock %}
-      </div>
-      </div>
-    <div class="navbar navbar-fixed-bottom navbar-inverse">
-        <h3 class="text-center" style="color: white">Footer text here.</h3>
-    </div>
+        {% block content %}
+        Default content here.
+        {% endblock %}
     </div> <!-- /container -->
 
 
