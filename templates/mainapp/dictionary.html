@@ -1,4 +1,11 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
-    <p class="text-center">Text here.</p>
+    <table class="table table-bordered table-hover table-responsive">
+    {% for item in items %}
+<tr>
+<td>{{ item.expression }}</td>
+<td>{{ item.definition }}</td>
+</tr>
+    {% endfor %}
+    </table>
 {% endblock %}

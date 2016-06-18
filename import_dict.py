@@ -10,6 +10,7 @@ def save_data(data):
     Dictionary.objects.create(expression=data['expression'],
                               definition=data['definition'])
 
+print('Starting dictionary upload...')
 with open('mainapp/legal.txt', newline='', errors='ignore') as legalin:
     legalreader = csv.reader(legalin, delimiter=';')
     for row in legalreader:
@@ -18,3 +19,5 @@ with open('mainapp/legal.txt', newline='', errors='ignore') as legalin:
             'definition': row[1]
         }
         save_data(data)
+
+print('Dictionary successfuly uploaded.')

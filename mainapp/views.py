@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from .models import Category, Reference, Issue, Question
-from django.http import HttpResponse, HttpResponseRedirect
-from django.http import JsonResponse
+from .models import Category, Reference, Issue, Question, Dictionary
 
 
 def index(request):
@@ -45,8 +43,9 @@ def search(request):
 
 
 def dictionary(request):
+    items = Dictionary.objects.all()
     categories = Category.objects.all()
-    return render(request, 'mainapp/dictionary.html', {'categories': categories})
+    return render(request, 'mainapp/dictionary.html', {'categories': categories, 'items': items})
 
 
 def local_help(request):
