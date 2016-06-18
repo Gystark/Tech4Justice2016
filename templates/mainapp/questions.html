@@ -1,5 +1,22 @@
 {% extends 'mainapp/base.html' %}
-
+{% load static from staticfiles %}
 {% block content %}
+    {% for question_data in context %}
+        <div class="container">
+            <div class="question">
+                <a class="list-group-item" href="#">{{ question_data.question.question }}</a>
+            </div>
+            <div class="answer" hidden>
+                <p>{{ question_data.question.question }}</p>
+                <p>Further references:</p>
+                {% for reference in question_data.references %}
+                    <a href="{{ reference.reference }}" >{{ reference.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
 
+{% block static_per_page %}
+    <script src="{% static 'mainapp/js/answer_visibility_toggle.js' %}" ></script>
 {% endblock %}

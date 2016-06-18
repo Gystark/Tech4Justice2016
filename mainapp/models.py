@@ -50,7 +50,7 @@ class Question(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.question)
-        super(Category, self).save(*args, **kwargs)
+        super(Question, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.question
@@ -60,7 +60,7 @@ class Reference(models.Model):
     """
     different references are stored here
     """
-
+    name = models.CharField(max_length=100, default="")
     reference = models.URLField()
     question = models.ForeignKey(Question)
 

@@ -20,9 +20,15 @@ def view_category(request, category_name_slug):
     return render(request, 'mainapp/issues.html', context)
 
 def view_issue(request, issue_name_slug):
-    context = {}
+    context = []
     if request.method == "GET":
         issue_searched = Issue.objects.get(slug = issue_name_slug)
+        # get the questions related to the issue
         issue_questions = Question.objects.filter(issue = issue_searched)
-        context['questions'] = issue_questions
-    return render(request, 'mainapp/questions.html', context)
+
+        for question in issue_questions:
+            # get all the references related to this question
+            references = Reference.objects.filter(question=question)
+            context.append({'question': question, 'references': references})
+
+    return render(request, 'mainapp/questions.html', {'context': context})
