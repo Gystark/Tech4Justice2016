@@ -15,4 +15,6 @@ def populate():
     c1_issue1 = Issue.objects.get_or_create(name="child abuse", category=c1)
     c1_issue2 = Issue.objects.get_or_create(name="bad kids", category=c1)
 
+    c1_issue1_question1 = Question.objects.get_or_create()
+
 populate()

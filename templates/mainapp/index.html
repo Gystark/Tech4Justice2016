@@ -1,13 +1,6 @@
 {% extends 'mainapp/base.html' %}
-{% block sidebar %}
-{% for category in categories %}
-    <div class="list-group" >
-        <a href="#" class="list-group-item category-identifier" value="{{ category.id }}" >{{ category.name }}</a>
-    </div>
-{% endfor %}
-
-{% endblock %}
 {% block content %}
-    <div id="issue-list">
-    </div>
+    {% for category in categories %}
+        <a href="{% url 'category' category.slug %}" class="list-group-item">{{ category.name }}</a>
+    {% endfor %}
 {% endblock %}

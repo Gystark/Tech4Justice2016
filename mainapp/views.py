@@ -12,14 +12,17 @@ def index(request):
 
 
 def view_category(request, category_name_slug):
-    return render(request, 'mainapp/category.html', {})
-
-def get_issues(request):
     context = {}
-    if request.is_ajax():
-        category_searched = Category.objects.get(id=request.GET['category_id'])
+    if request.method == "GET":
+        category_searched = Category.objects.get(slug=category_name_slug)
         category_issues = Issue.objects.filter(category=category_searched)
         context['issues'] = category_issues
-        return render(request, 'mainapp/issues.html', context)
+    return render(request, 'mainapp/issues.html', context)
 
-    return HttpResponseRedirect('/')
+def view_issue(request, issue_name_slug):
+    context = {}
+    if request.method == "GET":
+        issue_searched = Issue.objects.get(slug = issue_name_slug)
+        issue_questions = Question.objects.filter(issue = issue_searched)
+        context['questions'] = issue_questions
+    return render(request, 'mainapp/questions.html', context)
