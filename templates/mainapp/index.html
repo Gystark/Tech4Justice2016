@@ -31,13 +31,6 @@
                 <p><strong>{{ question.question }}</strong></p>
                 <p>{{ question.answer }}</p>
             {% endfor %}
-            <br>
-            {% if issues %}
-                <h3>Issues:</h3>
-            {% endif %}
-            {% for issue in issues %}
-                <p><a href="/issue/{{ issue.slug }}">{{ issue.name }}</a></p>
-            {% endfor %}
         </div>
     </div>
         <div class="row">

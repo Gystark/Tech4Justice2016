@@ -39,8 +39,7 @@ def search(request):
         search_term = ''
     questions = Question.objects.filter(question__icontains=search_term) or\
                 Question.objects.filter(answer__icontains=search_term)
-    issues = Issue.objects.filter(name__icontains=search_term)
-    return render(request, 'mainapp/index.html', {'issues': issues, 'questions': questions})
+    return render(request, 'mainapp/index.html', {'questions': questions})
 
 
 def search_dictionary(request):
