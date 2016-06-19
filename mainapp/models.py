@@ -64,6 +64,7 @@ class Reference(models.Model):
     """
     different references are stored here
     """
+
     name = models.CharField(max_length=100, default="")
     reference = models.URLField()
     question = models.ForeignKey(Question)

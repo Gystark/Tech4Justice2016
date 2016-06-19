@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Category, Reference, Issue, Question, Dictionary
-from django.http import HttpResponseRedirect
+
 
 def index(request):
     categories = Category.objects.all()
