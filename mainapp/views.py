@@ -40,8 +40,7 @@ def search(request):
     questions = Question.objects.filter(question__icontains=search_term) or\
                 Question.objects.filter(answer__icontains=search_term)
     issues = Issue.objects.filter(name__icontains=search_term)
-    categories = Category.objects.filter(name__icontains=search_term)
-    return render(request, 'mainapp/search.html', {'issues': issues,'categories': categories, 'questions': questions})
+    return render(request, 'mainapp/index.html', {'issues': issues, 'questions': questions})
 
 
 def search_dictionary(request):
@@ -51,6 +50,7 @@ def search_dictionary(request):
                   Dictionary.objects.filter(definition__icontains=search_term)
         results_length = len(results)
         return render(request, 'mainapp/dictionary_search.html', {'items': results, 'length': results_length})
+
 
 def dictionary(request):
     items = Dictionary.objects.all()
