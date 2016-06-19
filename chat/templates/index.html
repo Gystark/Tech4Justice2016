@@ -23,30 +23,31 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav" style="font-weight:bold;">
-                <li class="active"><a href="http://127.0.0.1:8000/"><i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Your Issues</a></li>
-                <li><a href="http://127.0.0.1:8888/"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>&nbsp;&nbsp;Talk to someone</a></li>
+                <li><a href="http://127.0.0.1:8000/"><i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Your Issues</a></li>
+                <li class="active"><a href="http://127.0.0.1:8888/"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>&nbsp;&nbsp;Talk to someone</a></li>
                 <li><a href="http://127.0.0.1:8000/local_help/"><i class="glyphicon glyphicon-globe" aria-hidden="true"></i>&nbsp;&nbsp;Find local help</a></li>
                 <li><a href="http://127.0.0.1:8000/dictionary/"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>&nbsp;&nbsp;Dictionary</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-    <div id="body">
+    <div id="body" class="center">
       <div id="inbox">
         {% for message in messages %}
           {% include "message.html" %}
         {% end %}
       </div>
-      <div id="input">
+      <div id="input" class="text-center">
         <form action="/a/message/new" method="post" id="messageform">
           <table>
             <tr>
-              <td><input name="body" id="message" style="width:500px"></td>
+              <td><input name="body" id="message" style="width:100%;"></td>
               <td style="padding-left:5px">
+
                   <span class="input-group-btn">
-                <input type="submit" class="btn btn-primary" value="{{ _("Post") }}">
-                <input type="hidden" class="form-control" name="next" value="{{ request.path }}">
-                      </span>
+                    <input type="submit" class="btn btn-primary btn-lg" value="{{ _("Post") }}">
+                    <input type="hidden" class="form-control" name="next" value="{{ request.path }}">
+                  </span>
                 {% module xsrf_form_html() %}
               </td>
             </tr>
