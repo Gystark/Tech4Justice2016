@@ -69,17 +69,22 @@
     </div>
     </div>
     <div class="row">
-        {% for category in categories %}
-            <div class="col-lg-4 col-sm-6 col-xs-12">
-                <a href="/category/{{ category.slug }}">
-                    {% if category.photo %}
-                        <img src="/media/{{ category.photo }}" class="thumbnail img-responsive">
-                    {% else %}
-                        <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
-                    {% endif %}
-                    <div class="carousel-caption"><h3>{{ category.name }}</h3></div>
-                </a>
-            </div>
-        {% endfor %}
+        <div id="container-for-cats">
+            {% for category in categories %}
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <a href="/category/{{ category.slug }}">
+                        {% if category.photo %}
+                            <img src="/media/{{ category.photo }}" class="thumbnail img-responsive">
+                        {% else %}
+                            <img src="http://placehold.it/800x600" class="thumbnail img-responsive">
+                        {% endif %}
+                        <div class="carousel-caption"><h3>{{ category.name }}</h3></div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+{% endblock %}
+{% block static_per_page %}
+    <script src="{% static 'mainapp/js/auto_complete_category.js' %}"></script>
 {% endblock %}
