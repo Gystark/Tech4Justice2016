@@ -1,7 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
-    <h2 class="text-center" style="padding-top: 3%;">Here are the lawyers closest to you:</h2>
-    <section id="wrapper" style="padding-top: 7%;">
+    <section id="wrapper" style="padding-top: 0%;">
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF-r-WMt7dG_OEO-7KoEixjsPK30Ezuxk&libraries=places"></script>
         <article>
@@ -16,7 +15,7 @@
                 var mapcanvas = document.createElement('div');
                 mapcanvas.id = 'mapcontainer';
                 mapcanvas.style.height = '600px';
-                mapcanvas.style.width = '800px';
+                mapcanvas.style.width = '100%';
 
                 document.querySelector('article').appendChild(mapcanvas);
 
