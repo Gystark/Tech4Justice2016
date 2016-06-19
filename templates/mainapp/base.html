@@ -25,9 +25,9 @@
     <![endif]-->
 
     <style type="text/css">
-    .search_bg  {
-        background-image: url("{% static 'mainapp/images/search_bg.jpg' %}");
-    }
+        .search_bg {
+            background-image: url("{% static 'mainapp/images/search_bg.jpg' %}");
+        }
     </style>
 
 </head>
@@ -35,7 +35,8 @@
 <body>
 
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" style="background-color:#000000; height:61px; padding-top:5px;">
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse"
+     style="background-color:#000000; height:6%; padding-top:5px;">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -45,28 +46,35 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'mainapp/images/nav_bar_logo.png' %}" style="margin-top:-15px;"/></a>
         </div>
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'mainapp/images/nav_bar_logo.png' %}" style="margin-top:-15px;"/></a>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav" style="font-weight:bold;">
-                <li class="{% if request.get_full_path == '/' %}active{% endif %}"><a href="{% url 'index' %}"><i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Your Issues</a></li>
-                <li class="{% if request.get_full_path == 'http://127.0.0.1:8888/' %}active{% endif %}"><a href="http://127.0.0.1:8888/"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>&nbsp;&nbsp;Talk to someone</a></li>
-                <li class="{% if request.get_full_path == '/local_help/' %}active{% endif %}"><a href="{% url 'local_help' %}"><i class="glyphicon glyphicon-globe" aria-hidden="true"></i>&nbsp;&nbsp;Find local help</a></li>
-                <li class="{% if request.get_full_path == '/dictionary/' %}active{% endif %}"><a href="{% url 'dictionary' %}"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>&nbsp;&nbsp;Dictionary</a></li>
+                <li class="{% if request.get_full_path == '/' %}active{% endif %}"><a href="{% url 'index' %}"><i
+                        class="glyphicon glyphicon-th-large" aria-hidden="true"></i>&nbsp;&nbsp;Your Issues</a></li>
+                <li class="{% if request.get_full_path == 'http://127.0.0.1:8888/' %}active{% endif %}"><a
+                        href="http://127.0.0.1:8888/"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>&nbsp;&nbsp;Talk
+                    to someone</a></li>
+                <li class="{% if request.get_full_path == '/local_help/' %}active{% endif %}"><a
+                        href="{% url 'local_help' %}"><i class="glyphicon glyphicon-globe" aria-hidden="true"></i>&nbsp;&nbsp;Find
+                    local help</a></li>
+                <li class="{% if request.get_full_path == '/dictionary/' %}active{% endif %}"><a
+                        href="{% url 'dictionary' %}"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>&nbsp;&nbsp;Dictionary</a></li>
+
             </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'registration_register' %}">Signup</a></li>
-                    <li><a href="{% url 'auth_login' %}">Login</a></li>
-                </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'registration_register' %}">Signup</a></li>
+                <li><a href="{% url 'auth_login' %}">Login</a></li>
+            </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 
 <div class="container">
-                {% block content %}
-            {% endblock %}
+    {% block content %}
+    {% endblock %}
     <div class="navbar navbar-fixed-bottom navbar-inverse">
-        <h3 class="text-center" style="color: white">©  Wasp Team 2016</h3>
+        <h3 class="text-center" style="color: white">© Wasp Team 2016</h3>
     </div>
 </div>
 
