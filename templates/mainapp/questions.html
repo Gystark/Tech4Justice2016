@@ -1,15 +1,15 @@
 {% extends 'mainapp/base.html' %}
 {% load static from staticfiles %}
 {% block content %}
-    {% for question_data in context %}
+    {% for question in questions %}
         <div class="container" style="padding-top: 5%;">
             <div class="question">
-                <a class="list-group-item" href="#">{{ question_data.question.question }}</a>
+                <a class="list-group-item" href="#">{{ question.question }}</a>
             </div>
             <div class="answer" hidden>
-                <p>{{ question_data.question.answer }}</p>
+                <p>{{ question.answer }}</p>
                 <p>Further references:</p>
-                {% for reference in question_data.references %}
+                {% for reference in question.references %}
                     <a href="{{ reference.reference }}">{{ reference.name }}</a>
                 {% endfor %}
             </div>
