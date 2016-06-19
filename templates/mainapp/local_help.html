@@ -1,7 +1,7 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
     <h2 class="text-center" style="padding-top: 3%;">Here are the lawyers closest to you:</h2>
-    <section id="wrapper" class="col-sm-8 col-sm-offset-2" style="padding-top: 7%;">
+    <section id="wrapper" style="padding-top: 7%;">
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF-r-WMt7dG_OEO-7KoEixjsPK30Ezuxk&libraries=places"></script>
         <article>
@@ -33,7 +33,11 @@
                 };
                 var map = new google.maps.Map(document.getElementById("mapcontainer"), options);
 
-                var myLatLng = {lat: 55.8626, lng: -4.3108};
+                google.maps.event.addDomListener(window, "resize", function() {
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center);
+});
 
                 var marker = new google.maps.Marker({
                     position: coords,
