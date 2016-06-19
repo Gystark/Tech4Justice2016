@@ -1,14 +1,22 @@
 {% extends 'mainapp/base.html' %}
 {% load static from staticfiles %}
 {% block content %}
-        <div class="col-lg-3 col-lg-offset-4" style="padding-top: 5%; padding-bottom: 3%;">
-            <form class="form-group" action="{% url 'search_dictionary' %}" method="get">
-                <div class="input-group">
-                    <input type="text"  class="form-control" placeholder="Search dictionary" name="search-term"
-                           id="search-term">
-                </div>
-            </form>
-        </div>
+       <div class="jumbotron text-center search_bg">
+        <h1 style="margin-top:-5px; color:#ffffff; text-shadow: 2px 2px #000000;">Your first point for legal help</h1>
+        <br/>
+        <form autocomplete="off" class="form-horizontal" action="{% url 'search_dictionary' %}" method="get"
+              accept-charset="utf-8">
+            <div class="input-group">
+                <input value="" class="form-control input-lg" placeholder="What do you need help with?" type="text"
+                       name="search-term" id="search-term">
+            <span class="input-group-btn">
+               <button class="btn btn-default btn-lg" type="submit" id="addressSearch">
+                   <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+               </button>
+            </span>
+            </div>
+        </form>
+    </div>
         <div id="container-for-dict">
             <table class="table table-bordered table-hover table-responsive">
                 {% for item in items %}
