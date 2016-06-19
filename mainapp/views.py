@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Category, Reference, Issue, Question, Dictionary
-
+from django.http import HttpResponseRedirect
 
 def index(request):
     categories = Category.objects.all()
@@ -51,7 +51,6 @@ def search_dictionary(request):
                   Dictionary.objects.filter(definition__icontains=search_term)
         results_length = len(results)
         return render(request, 'mainapp/dictionary_search.html', {'items': results, 'length': results_length})
-
 
 def dictionary(request):
     items = Dictionary.objects.all()
