@@ -1,93 +1,93 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
     <h2 class="text-center" style="padding-top: 3%;">Here are the lawyers closest to you:</h2>
-<section id="wrapper" class="col-sm-8 col-sm-offset-3" style="padding-top: 7%;">
+    <section id="wrapper" class="col-sm-8 col-sm-offset-3" style="padding-top: 7%;">
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF-r-WMt7dG_OEO-7KoEixjsPK30Ezuxk&libraries=places"></script>
-    <article>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF-r-WMt7dG_OEO-7KoEixjsPK30Ezuxk&libraries=places"></script>
+        <article>
 
-    </article>
-    <script>
+        </article>
+        <script>
 
-/* code was taken from https://paulund.co.uk/how-to-use-geolocation-api-with-google-maps */
-
-
-function success(position) {
-  var mapcanvas = document.createElement('div');
-  mapcanvas.id = 'mapcontainer';
-  mapcanvas.style.height = '400px';
-  mapcanvas.style.width = '600px';
-
-  document.querySelector('article').appendChild(mapcanvas);
-
-  var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-  var options = {
-    zoom: 15,
-    center: coords,
-    mapTypeControl: false,
-    navigationControlOptions: {
-    	style: google.maps.NavigationControlStyle.SMALL
-    },
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var map = new google.maps.Map(document.getElementById("mapcontainer"), options);
-
-  var myLatLng = {lat: 55.8626, lng: -4.3108};
-
-  var marker = new google.maps.Marker({
-      position: coords,
-      map: map,
-      title:"You are here!"
-  });
-
-    var request = {
-        query: "lawyer",
-        location: coords,
-        radius: '500'
-    };
- var infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, callback);
+            /* code was taken from https://paulund.co.uk/how-to-use-geolocation-api-with-google-maps */
 
 
-  marker.setAnimation(google.maps.Animation.BOUNCE);
+            function success(position) {
+                var mapcanvas = document.createElement('div');
+                mapcanvas.id = 'mapcontainer';
+                mapcanvas.style.height = '400px';
+                mapcanvas.style.width = '600px';
+
+                document.querySelector('article').appendChild(mapcanvas);
+
+                var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                var options = {
+                    zoom: 15,
+                    center: coords,
+                    mapTypeControl: false,
+                    navigationControlOptions: {
+                        style: google.maps.NavigationControlStyle.SMALL
+                    },
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("mapcontainer"), options);
+
+                var myLatLng = {lat: 55.8626, lng: -4.3108};
+
+                var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    title: "You are here!"
+                });
+
+                var request = {
+                    query: "lawyer",
+                    location: coords,
+                    radius: '500'
+                };
+                var infowindow = new google.maps.InfoWindow();
+                var service = new google.maps.places.PlacesService(map);
+                service.textSearch(request, callback);
 
 
-    function createMarker(result) {
-    var marker = new google.maps.Marker({
-        map: map,
-        place: {
-            placeId: result.place_id,
-            location: result.geometry.location
-        }
-    });
-        var request = {placeId: result.place_id};
-        service.getDetails(request, function (place) {
-            google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                    place.formatted_address + "<br><a href='tel:" + place.formatted_phone_number + "'>" + place.formatted_phone_number + "</a><br><a href='" + place.website + "'>" + place.website + "</a></div>");
-        infowindow.open(map, this);
-      });
-        })
-}
-
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i], map);
-    }
-  }
-}
-}
+                marker.setAnimation(google.maps.Animation.BOUNCE);
 
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(success);
-} else {
-  error('Geo Location is not supported');
-}
+                function createMarker(result) {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        place: {
+                            placeId: result.place_id,
+                            location: result.geometry.location
+                        }
+                    });
+                    var request = {placeId: result.place_id};
+                    service.getDetails(request, function (place) {
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                                    place.formatted_address + "<br><a href='tel:" + place.formatted_phone_number + "'>" + place.formatted_phone_number + "</a><br><a href='" + place.website + "'>" + place.website + "</a></div>");
+                            infowindow.open(map, this);
+                        });
+                    })
+                }
 
-</script>
-</section>
+                function callback(results, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                        for (var i = 0; i < results.length; i++) {
+                            createMarker(results[i], map);
+                        }
+                    }
+                }
+            }
+
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success);
+            } else {
+                error('Geo Location is not supported');
+            }
+
+        </script>
+    </section>
 {% endblock %}
