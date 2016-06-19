@@ -30,18 +30,20 @@ import os.path
 import uuid
 
 from tornado.options import define, options
+from cleverbot import Cleverbot
 
+cb = Cleverbot()
 define("port", default=8888, help="run on the given port", type=int)
 
-
+# Application: main manager of website
 class Application(tornado.web.Application):
     def __init__(self):
-        handlers = [
+        handlers = [  # handler are the workers of the website
             (r"/", MainHandler),
             (r"/chatsocket", ChatSocketHandler),
             (r"/png", tornado.web.StaticFileHandler, {'path':'./'}),
         ]
-        settings = dict(
+        settings = dict(  # settings of tornado
             cookie_secret="__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
@@ -51,15 +53,25 @@ class Application(tornado.web.Application):
 
 
 class Handler(tornado.web.RequestHandler):
+    """
+    Handler for images
+    """
     def get(self):
         self.render("html_image_05.html")
 
 
 class MainHandler(tornado.web.RequestHandler):
+    """
+    Handler of the main page
+    """
     def get(self):
         self.render("index.html", messages=ChatSocketHandler.cache)
 
+
 class ChatSocketHandler(tornado.websocket.WebSocketHandler):
+    """
+    Handler of the chat
+    """
     waiters = set()
     cache = []
     cache_size = 200
@@ -69,19 +81,40 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
         return {}
 
     def open(self):
+        """
+        Adds a user to the conversation
+
+        :return:
+        """
         ChatSocketHandler.waiters.add(self)
 
     def on_close(self):
+        """
+        Closes connection when user leavers
+
+        :return:
+        """
         ChatSocketHandler.waiters.remove(self)
 
     @classmethod
     def update_cache(cls, chat):
+        """
+        Write onto the chat
+
+        :param chat:
+        :return:
+        """
         cls.cache.append(chat)
         if len(cls.cache) > cls.cache_size:
             cls.cache = cls.cache[-cls.cache_size:]
 
     @classmethod
     def send_updates(cls, chat):
+        """
+        Sends response to the users
+        :param chat:
+        :return:
+        """
         logging.info("sending message to %d waiters", len(cls.waiters))
         for waiter in cls.waiters:
             try:
@@ -90,6 +123,12 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
                 logging.error("Error sending message", exc_info=True)
 
     def on_message(self, message):
+        """
+        Writes message to message.html so it can be displayed
+
+        :param message:
+        :return:
+        """
         logging.info("got message %r", message)
         parsed = tornado.escape.json_decode(message)
         chat = {
