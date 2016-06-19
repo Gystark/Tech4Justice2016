@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'^dictionary/', views.dictionary, name='dictionary'),
     url(r'^local_help/', views.local_help, name='local_help'),
-    url(r'^talk_to_someone/', views.talk_to_someone, name='talk_to_someone')
+    url(r'^talk_to_someone/', views.talk_to_someone, name='talk_to_someone'),
+    url(r'^search_categories/$', views.search_categories, name='search_categories')
 ]

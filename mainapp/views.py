@@ -71,3 +71,10 @@ def local_help(request):
 
 def talk_to_someone(request):
     return render(request, 'mainapp/talk_to_someone.html')
+
+def search_categories(request):
+    if request.is_ajax():
+        search_term = request.GET['search_term']
+        results = Category.objects.filter(name__contains=search_term)
+        return render(request, 'mainapp/categories_search.html', {'results': results})
+
