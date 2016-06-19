@@ -30,25 +30,25 @@ import os.path
 import uuid
 
 from tornado.options import define, options
-from cleverbot import Cleverbot
 
-cb = Cleverbot()
+
 define("port", default=8888, help="run on the given port", type=int)
 
 # Application: main manager of website
 class Application(tornado.web.Application):
     def __init__(self):
-        handlers = [  # handler are the workers of the website
-            (r"/", MainHandler),
-            (r"/chatsocket", ChatSocketHandler),
-            (r"/png", tornado.web.StaticFileHandler, {'path':'./'}),
-        ]
+
         settings = dict(  # settings of tornado
             cookie_secret="__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
             xsrf_cookies=True,
         )
+        handlers = [  # handler are the workers of the website
+            (r"/", MainHandler),
+            (r"/chatsocket", ChatSocketHandler),
+            (r"/png", tornado.web.StaticFileHandler, {'path': settings['static_path']}),
+        ]
         super(Application, self).__init__(handlers, **settings)
 
 
