@@ -44,6 +44,7 @@
                     map: map,
                     title: "You are here!"
                 });
+                marker.setAnimation(google.maps.Animation.BOUNCE);
 
                 var request = {
                     query: "lawyer",
@@ -53,9 +54,6 @@
                 var infowindow = new google.maps.InfoWindow();
                 var service = new google.maps.places.PlacesService(map);
                 service.textSearch(request, callback);
-
-
-                marker.setAnimation(google.maps.Animation.BOUNCE);
 
 
                 function createMarker(result) {
