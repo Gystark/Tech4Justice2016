@@ -131,6 +131,7 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
         """
         logging.info("got message %r", message)
         parsed = tornado.escape.json_decode(message)
+        print (parsed["body"])
         chat = {
             "id": str(uuid.uuid4()),
             "body": parsed["body"],
