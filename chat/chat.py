@@ -39,6 +39,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", MainHandler),
             (r"/chatsocket", ChatSocketHandler),
+            (r"/png", tornado.web.StaticFileHandler, {'path':'./'}),
         ]
         settings = dict(
             cookie_secret="__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
@@ -47,6 +48,11 @@ class Application(tornado.web.Application):
             xsrf_cookies=True,
         )
         super(Application, self).__init__(handlers, **settings)
+
+
+class Handler(tornado.web.RequestHandler):
+    def get(self):
+        self.render("html_image_05.html")
 
 
 class MainHandler(tornado.web.RequestHandler):
