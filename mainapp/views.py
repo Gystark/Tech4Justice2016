@@ -46,8 +46,8 @@ def search(request):
 def search_dictionary(request):
     if request.is_ajax():
         search_term = request.GET['search_term']
-        results = Dictionary.objects.filter(expression__contains=search_term) or \
-                  Dictionary.objects.filter(definition__contains=search_term)
+        results = Dictionary.objects.filter(expression__icontains=search_term) or \
+                  Dictionary.objects.filter(definition__icontains=search_term)
         results_length = len(results)
         return render(request, 'mainapp/dictionary_search.html', {'items': results, 'length': results_length})
 

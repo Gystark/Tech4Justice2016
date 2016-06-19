@@ -1,14 +1,17 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
-<section id="wrapper">
+    <h2 class="text-center" style="padding-top: 3%;">Here are the lawyers closest to you:</h2>
+<section id="wrapper" class="col-sm-8 col-sm-offset-3" style="padding-top: 7%;">
 
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF-r-WMt7dG_OEO-7KoEixjsPK30Ezuxk&libraries=places"></script>
     <article>
 
     </article>
     <script>
 
 /* code was taken from https://paulund.co.uk/how-to-use-geolocation-api-with-google-maps */
+
+
 function success(position) {
   var mapcanvas = document.createElement('div');
   mapcanvas.id = 'mapcontainer';
@@ -38,15 +41,46 @@ function success(position) {
       title:"You are here!"
   });
 
+    var request = {
+        query: "lawyer",
+        location: coords,
+        radius: '500'
+    };
+ var infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+
+
   marker.setAnimation(google.maps.Animation.BOUNCE);
 
-  var marker1 = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      title:"name: George McLawyer \nAddress: govan subway \nTelephone: 0863734823 \nwebsite: George.McLawyer.co.uk",
-      icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-  });
+
+    function createMarker(result) {
+    var marker = new google.maps.Marker({
+        map: map,
+        place: {
+            placeId: result.place_id,
+            location: result.geometry.location
+        }
+    });
+        var request = {placeId: result.place_id};
+        service.getDetails(request, function (place) {
+            google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                    place.formatted_address + "<br><a href='tel:" + place.formatted_phone_number + "'>" + place.formatted_phone_number + "</a><br><a href='" + place.website + "'>" + place.website + "</a></div>");
+        infowindow.open(map, this);
+      });
+        })
 }
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i], map);
+    }
+  }
+}
+}
+
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(success);
