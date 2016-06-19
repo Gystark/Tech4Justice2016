@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Category, Reference, Issue, Question, Dictionary
 
 
@@ -54,6 +55,14 @@ def search_dictionary(request):
 
 def dictionary(request):
     items = Dictionary.objects.all()
+    paginator = Paginator(items, 25)
+    page = request.GET.get('page')
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
     return render(request, 'mainapp/dictionary.html', {'items': items})
 
 
