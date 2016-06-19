@@ -17,27 +17,7 @@
             </div>
         </form>
     </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-6" style="margin-bottom: 5%;; padding-top: 5%;">
-            <h2>Internal results:</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-3">
-            {% if questions %}
-                <h3>Questions:</h3>
-            {% endif %}
-            {% for question in questions %}
-                <p><strong>{{ question.question }}</strong></p>
-                <p>{{ question.answer }}</p>
-            {% endfor %}
-        </div>
-    </div>
-        <div class="row">
-        <div class="col-sm-8 col-sm-offset-6" style="margin-bottom: 5%;; padding-top: 5%;">
-            <h2>External results:</h2>
-        </div>
-    </div>
+
     <div>
     <script>
   (function() {

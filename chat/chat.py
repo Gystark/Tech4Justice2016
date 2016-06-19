@@ -34,6 +34,7 @@ from tornado.options import define, options
 
 define("port", default=8888, help="run on the given port", type=int)
 
+
 # Application: main manager of website
 class Application(tornado.web.Application):
     def __init__(self):
@@ -75,6 +76,7 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
     waiters = set()
     cache = []
     cache_size = 200
+    turn = 0
 
     def get_compression_options(self):
         # Non-None enables compression with default options.
@@ -131,13 +133,21 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
         """
         logging.info("got message %r", message)
         parsed = tornado.escape.json_decode(message)
+
+        if self.turn%2 == 0:
+            print self.turn
+            user = 'You: '
+            self.turn += 1
+        else:
+            user = 'Expert: '
+            self.turn += 1
         print (parsed["body"])
         chat = {
             "id": str(uuid.uuid4()),
             "body": parsed["body"],
             }
         chat["html"] = tornado.escape.to_basestring(
-            self.render_string("message.html", message=chat))
+            self.render_string("message.html", message=chat, user=user))
 
         ChatSocketHandler.update_cache(chat)
         ChatSocketHandler.send_updates(chat)
