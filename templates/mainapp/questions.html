@@ -1,6 +1,33 @@
 {% extends 'mainapp/base.html' %}
 {% load static from staticfiles %}
 {% block content %}
+    <div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            {% for a in 'aaaaaaaaa' %}
+            <li><a href="#">Resource - {{ forloop.counter }}.</a></li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+</div>
+           <div class="jumbotron text-center search_bg">
+        <h1 style="margin-top:-5px; color:#ffffff; text-shadow: 2px 2px #000000;">Your first point for legal help</h1>
+        <br/>
+        <form autocomplete="off" class="form-horizontal" action="{% url 'search_dictionary' %}" method="get"
+              accept-charset="utf-8">
+            <div class="input-group">
+                <input value="" class="form-control input-lg" placeholder="What do you need help with?" type="text"
+                       name="search-term" id="search-term">
+            <span class="input-group-btn">
+               <button class="btn btn-default btn-lg" type="submit" id="addressSearch">
+                   <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+               </button>
+            </span>
+            </div>
+        </form>
+    </div>
     {% for question in questions %}
         <div class="container" style="padding-top: 5%;">
             <div class="question">
