@@ -24,7 +24,7 @@ def search(request):
         search_term = ''
     questions = Question.objects.filter(question__icontains=search_term) or\
                 Question.objects.filter(answer__icontains=search_term)
-    return render(request, 'mainapp/index.html', {'questions': questions})
+    return render(request, 'mainapp/search.html', {'questions': questions})
 
 
 def search_dictionary(request):
